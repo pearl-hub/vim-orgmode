@@ -22,7 +22,6 @@ function post_update(){
 }
 
 function pre_remove(){
-    rm -rf ${PEARL_PKGVARDIR}/vim-orgmode
-    rm -rf ${PEARL_PKGVARDIR}/utl
+    rm -rf ${PEARL_PKGVARDIR}/plugins
     return 0
 }
