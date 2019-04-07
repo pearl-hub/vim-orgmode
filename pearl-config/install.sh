@@ -4,15 +4,21 @@ function post_install(){
     local giturl=https://github.com/jceb/vim-orgmode.git
 
     info "Installing or updating the $pluginname git repository..."
-    mkdir -p "${PEARL_PKGVARDIR}/plugins/pack/pearl/start"
-    install_or_update_git_repo $giturl "${PEARL_PKGVARDIR}/plugins/pack/pearl/start/$pluginname" master
+    local plugin_root="${PEARL_PKGVARDIR}/plugins/pack/pearl/start"
+    mkdir -p "$plugin_root"
+    install_or_update_git_repo $giturl "$plugin_root/$pluginname" master
+    [[ -e "$plugin_root/$pluginname/doc" ]] && \
+        vim -c "helptags $plugin_root/$pluginname/doc" -c q
 
     local pluginname=utl
     local giturl=https://github.com/vim-scripts/utl.vim.git
 
     info "Installing or updating the $pluginname git repository..."
-    mkdir -p "${PEARL_PKGVARDIR}/plugins/pack/pearl/start"
-    install_or_update_git_repo $giturl "${PEARL_PKGVARDIR}/plugins/pack/pearl/start/$pluginname" master
+    local plugin_root="${PEARL_PKGVARDIR}/plugins/pack/pearl/start"
+    mkdir -p "$plugin_root"
+    install_or_update_git_repo $giturl "$plugin_root/$pluginname" master
+    [[ -e "$plugin_root/$pluginname/doc" ]] && \
+        vim -c "helptags $plugin_root/$pluginname/doc" -c q
 
     return 0
 }
